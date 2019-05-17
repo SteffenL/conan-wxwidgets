@@ -34,6 +34,7 @@ class wxWidgetsConan(ConanFile):
                "mediactrl": [True, False],  # disabled by default as wxWidgets still uses deprecated GStreamer 0.10
                "propgrid": [True, False],
                "debugreport": [True, False],
+               "regex": [False, True],
                "ribbon": [True, False],
                "richtext": [True, False],
                "sockets": [True, False],
@@ -59,6 +60,7 @@ class wxWidgetsConan(ConanFile):
                "mediactrl": False,
                "propgrid": True,
                "debugreport": True,
+               "regex": True,
                "ribbon": True,
                "richtext": True,
                "sockets": True,
@@ -181,6 +183,7 @@ class wxWidgetsConan(ConanFile):
         cmake.definitions['wxUSE_MEDIACTRL'] = self.options.mediactrl
         cmake.definitions['wxUSE_PROPGRID'] = self.options.propgrid
         cmake.definitions['wxUSE_DEBUGREPORT'] = self.options.debugreport
+        cmake.definitions['wxUSE_REGEX'] = option_value(self.options.regex)
         cmake.definitions['wxUSE_RIBBON'] = self.options.ribbon
         cmake.definitions['wxUSE_RICHTEXT'] = self.options.richtext
         cmake.definitions['wxUSE_SOCKETS'] = self.options.sockets
@@ -267,6 +270,8 @@ class wxWidgetsConan(ConanFile):
             libs.append(library_pattern('propgrid'))
         if self.options.debugreport:
             libs.append(library_pattern('qa'))
+        if self.options.regex:
+            libs.append('wxregex{unicode}{debug}{suffix}')
         if self.options.ribbon:
             libs.append(library_pattern('ribbon'))
         if self.options.richtext:
