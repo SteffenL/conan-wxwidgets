@@ -7,10 +7,10 @@ import os
 
 class wxWidgetsConan(ConanFile):
     name = "wxwidgets"
-    version = "3.1.2"
+    version = "3.1.2-1"
     description = "wxWidgets is a C++ library that lets developers create applications for Windows, Mac OS X, " \
                   "Linux and other platforms with a single code base."
-    url = "https://github.com/bincrafters/conan-wxwidgets"
+    url = "https://github.com/SteffenL/conan-wxwidgets"
     homepage = "https://www.wxwidgets.org/"
     author = "Bincrafters <bincrafters@gmail.com>"
     license = "wxWidgets"
@@ -126,8 +126,8 @@ class wxWidgetsConan(ConanFile):
             self.requires.add('Expat/2.2.6@pix4d/stable')
 
     def source(self):
-        source_url = "https://github.com/wxWidgets/wxWidgets"
-        sha256 = "7aa0e9e95d969e47c989288016a04bb5c117f09da6f2e55bbb19c0a33e33f96e"
+        source_url = "https://github.com/SteffenL/wxWidgets"
+        sha256 = "5bcf3ceef05c051397bf2cae7f85bafd8e05b0d9b2963ee4ee87ac0b805de751"
         tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.version), sha256=sha256)
         extracted_dir = "wxWidgets-" + self.version
         os.rename(extracted_dir, self._source_subfolder)
