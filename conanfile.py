@@ -10,7 +10,7 @@ class wxWidgetsConan(ConanFile):
     version = "3.1.2"
     description = "wxWidgets is a C++ library that lets developers create applications for Windows, Mac OS X, " \
                   "Linux and other platforms with a single code base."
-    url = "https://github.com/bincrafters/conan-wxwidgets"
+    url = "https://github.com/SteffenL/conan-wxwidgets"
     homepage = "https://www.wxwidgets.org/"
     author = "Bincrafters <bincrafters@gmail.com>"
     license = "wxWidgets"
@@ -126,10 +126,9 @@ class wxWidgetsConan(ConanFile):
             self.requires.add('Expat/2.2.6@pix4d/stable')
 
     def source(self):
-        source_url = "https://github.com/wxWidgets/wxWidgets"
-        sha256 = "7aa0e9e95d969e47c989288016a04bb5c117f09da6f2e55bbb19c0a33e33f96e"
-        tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.version), sha256=sha256)
-        extracted_dir = "wxWidgets-" + self.version
+        source_url = "https://github.com/SteffenL/wxWidgets"
+        tools.get("{0}/archive/v{1}.tar.gz".format(source_url, self.version + "-custom"))
+        extracted_dir = "wxWidgets-" + self.version + "-custom"
         os.rename(extracted_dir, self._source_subfolder)
 
     def add_libraries_from_pc(self, library):
